@@ -1,77 +1,99 @@
-# Weather Application
+# Hi there, I'm George Dimitrov
 
-A beautiful, responsive web application for checking real-time weather data from around the world built with ASP.NET Core and Docker.
+<div align="center">
+  <img src="https://media.giphy.com/media/f3iwJFOVOwuy7K6FFw/giphy.gif" width="600" height="300"/>
+</div>
 
-![Weather Application](https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80)
+<div align="center">
+  
+[![GitHub followers](https://img.shields.io/github/followers/gdimitroww?label=Follow&style=social)](https://github.com/gdimitroww)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/georgi-dimitrov-112476340/)
+[![Email](https://img.shields.io/badge/-Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kasparlol123456@gmail.com)
 
-## Features
+<img src="https://komarev.com/ghpvc/?username=gdimitroww&style=flat-square&color=blue" alt=""/>
+</div>
 
-- **Beautiful Weather Interface**: Modern, clean UI with responsive design
-- **Global Weather Search**: Get weather for any city worldwide
-- **Accurate Location Search**: Support for city,country code format (e.g., "Sofia,BG") for precise results
-- **Custom Weather Icons**: Visual weather representations with animations
-- **Global Weather View**: Compare weather across major world cities
-- **Cross-Platform**: Works on Windows, macOS, and Linux
+## About Me
 
-## Technologies Used
+I'm a passionate software developer with a focus on creating efficient and innovative solutions. Currently working on exciting projects that combine modern technologies to solve real-world problems.
 
-- ASP.NET Core 9.0
-- Docker & Docker Compose
-- Bootstrap 5
-- Font Awesome
-- OpenWeatherMap API
+<details>
+<summary>More about me</summary>
+<br>
 
-## Getting Started
+```javascript
+{
+    "name": "George Dimitrov",
+    "location": "Bulgaria",
+    "code": ["C#", ".NET", "Avalonia UI", "HTML", "CSS", "JavaScript"],
+    "currentFocus": "Building Cross-Platform Applications",
+    "funFact": "I turn ☕ into <code/>",
+    "hobbies": [
+        "Coding",
+        "Problem Solving",
+        "Learning New Tech"
+    ]
+}
+```
+</details>
 
-### Prerequisites
+### What I'm Currently Working On
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [OpenWeatherMap API Key](https://openweathermap.org/api) (free tier works fine)
+-  [CryptoTracker](https://github.com/gdimitroww/CryptoTrackerApplication) - A desktop application for real-time cryptocurrency price tracking
+-  [TaskManagementSystem](https://github.com/gdimitroww/TaskManagementSystem) - A web application for easier Task Management
+-  [WeatherWebApp](https://github.com/gdimitroww/WetherApp) - A web application for checking every country's Weather
 
-### Setup
+### Most Used Languages
 
-1. **Clone the repository**
-   ```
-   git clone https://github.com/yourusername/weather-application.git
-   cd weather-application
-   ```
+<div align="center">
+  
+![C#](https://img.shields.io/badge/C%23-85%25-239120?style=for-the-badge&labelColor=black&color=239120)
+![HTML](https://img.shields.io/badge/HTML-8%25-E34F26?style=for-the-badge&labelColor=black&color=E34F26)
+![CSS](https://img.shields.io/badge/CSS-5%25-1572B6?style=for-the-badge&labelColor=black&color=1572B6)
+![JavaScript](https://img.shields.io/badge/JavaScript-2%25-F7DF1E?style=for-the-badge&labelColor=black&color=F7DF1E)
 
-2. **Configure API Key**
-   
-   Create an `appsettings.json` file in the WeatherApp directory with your OpenWeatherMap API key:
-   ```json
-   {
-     "OpenWeatherMapApiKey": "your-api-key-here"
-   }
-   ```
+</div>
 
-3. **Build and run with Docker**
-   ```
-   cd WeatherApp
-   docker-compose up --build -d
-   ```
+###  Technologies & Tools
 
-4. **Access the application**
-   
-   Open your browser and navigate to: http://localhost:8080
+<div align="center">
+  
+![C#](https://img.shields.io/badge/-C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![.NET](https://img.shields.io/badge/-.NET-512BD4?style=for-the-badge&logo=.net&logoColor=white)
+![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Git](https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github)
+![Visual Studio](https://img.shields.io/badge/-Visual%20Studio-5C2D91?style=for-the-badge&logo=visual-studio&logoColor=white)
 
-## Usage
+</div>
 
-- **Search for Weather**: Enter a city name or "city,country" in the search box
-- **Get Precise Results**: Use country codes for better accuracy (e.g., London,UK)
-- **View Global Weather**: Click the "View Global Weather" button to see weather for major cities
+###  GitHub Stats
 
-## Screenshots
+<div align="center">
+  
+![George's GitHub stats](https://github-readme-stats.vercel.app/api?username=gdimitroww&show_icons=true&theme=radical)
 
-- Home Page with Search
-- Weather Results Display
-- Global Weather View
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=gdimitroww&theme=dark)](https://git.io/streak-stats)
+</div>
 
-## License
+### Featured Projects
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+<div align="center">
+  <a href="https://github.com/gdimitroww/CryptoTrackerApplication">
+    <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=gdimitroww&repo=CryptoTrackerApplication&theme=radical" />
+  </a>
+  <a href="https://github.com/gdimitroww/TaskManagementSystem">
+    <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=gdimitroww&repo=TaskManagementSystem&theme=radical" />
+  </a>
+  <a href="https://github.com/gdimitroww/WetherApp">
+    <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=gdimitroww&repo=WetherApp&theme=radical"/>
+  </a>
+</div>
 
-## Acknowledgments
-
-- Weather data provided by [OpenWeatherMap](https://openweathermap.org/)
-- Icons by [Font Awesome](https://fontawesome.com/) 
+---
+<div align="center">
+  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
+  
+From [gdimitroww](https://github.com/gdimitroww) 
