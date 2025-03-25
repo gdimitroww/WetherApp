@@ -1,0 +1,383 @@
+@model WeatherApp.Models.WeatherModel
+
+@{
+    ViewData["Title"] = "Weather Forecast";
+}
+
+<div class="weather-search-container">
+    <div class="search-hero">
+        <div class="overlay"></div>
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-4 text-white mb-4">Weather Forecast</h1>
+                    <p class="lead text-white mb-5">Get accurate weather information for any location worldwide</p>
+                    
+                    <div class="search-card">
+                        <form asp-action="GetWeather" method="post" class="mb-3">
+                            <div class="input-group search-input-group">
+                                <input type="text" name="location" class="form-control form-control-lg" 
+                                    placeholder="Enter City or City,Country (e.g., Burgas,BG)" required>
+                                <button class="btn btn-primary btn-lg search-btn" type="submit">
+                                    <i class="fas fa-search me-2"></i>Get Weather
+                                </button>
+                            </div>
+                            <small class="form-text text-muted mt-2">For more accurate results, include the country code (e.g., Sofia,BG or London,UK)</small>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                @if (!string.IsNullOrEmpty(Model?.ErrorMessage))
+                {
+                    <div class="alert alert-danger shadow-sm">
+                        <i class="fas fa-exclamation-circle me-2"></i>@Model.ErrorMessage
+                    </div>
+                }
+                else if (Model != null && !string.IsNullOrEmpty(Model.Location))
+                {
+                    <div class="weather-result-card">
+                        <div class="card-header">
+                            <h2>Weather for @Model.Location</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <div class="weather-info">
+                                        <div class="main-temp">
+                                            <span class="temp-value">@Model.Temperature</span>
+                                            <span class="temp-unit">°C</span>
+                                        </div>
+                                        <h3 class="condition-text">@Model.Condition</h3>
+                                        <div class="location-details">
+                                            <i class="fas fa-map-marker-alt me-2"></i>
+                                            <span>@Model.City, @Model.Country</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="weather-details mt-4">
+                                        <div class="detail-item">
+                                            <div class="detail-icon">
+                                                <i class="fas fa-tint"></i>
+                                            </div>
+                                            <div class="detail-info">
+                                                <span class="detail-label">Humidity</span>
+                                                <span class="detail-value">@Model.Humidity%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-flex align-items-center justify-content-center">
+                                    <div class="weather-icon-container">
+                                        <i class="@Model.IconClass weather-icon-custom"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mb-5">
+    <a asp-action="AllCountries" class="btn btn-outline-primary btn-lg">
+        <i class="fas fa-globe me-2"></i>View Global Weather
+    </a>
+</div>
+
+@section Styles {
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        
+        .weather-search-container {
+            margin-bottom: 2rem;
+        }
+        
+        .search-hero {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1951&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            overflow: hidden;
+        }
+        
+        .search-hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(32, 67, 181, 0.8) 0%, rgba(33, 138, 174, 0.8) 100%);
+            z-index: 1;
+        }
+        
+        .search-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .search-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-input-group {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-input-group input {
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+        }
+        
+        .search-input-group input:focus {
+            box-shadow: none;
+        }
+        
+        .search-btn {
+            padding-left: 30px;
+            padding-right: 30px;
+            background: linear-gradient(135deg, #2043b5 0%, #218aae 100%);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background: linear-gradient(135deg, #1a379a 0%, #1a7292 100%);
+            transform: translateY(-2px);
+        }
+        
+        .weather-result-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .weather-result-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .weather-result-card .card-header {
+            background: linear-gradient(135deg, #2043b5 0%, #218aae 100%);
+            color: white;
+            padding: 20px 30px;
+            border-bottom: none;
+        }
+        
+        .weather-result-card .card-body {
+            padding: 30px;
+        }
+        
+        .weather-info {
+            margin-bottom: 20px;
+        }
+        
+        .main-temp {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+        
+        .temp-value {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #343a40;
+        }
+        
+        .temp-unit {
+            font-size: 2rem;
+            color: #6c757d;
+            margin-left: 5px;
+        }
+        
+        .condition-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #495057;
+            text-transform: capitalize;
+            margin-bottom: 15px;
+        }
+        
+        .location-details {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+        
+        .weather-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-top: 1px solid #e9ecef;
+            padding-top: 20px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            min-width: 120px;
+        }
+        
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(32, 67, 181, 0.1);
+            color: #2043b5;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .detail-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #343a40;
+        }
+        
+        .weather-icon-container {
+            margin: 20px;
+        }
+        
+        .weather-icon-custom {
+            font-size: 6rem;
+            padding: 30px;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 170px;
+            height: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .weather-icon-custom:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+        
+        /* Weather condition specific colors */
+        .fa-sun {
+            color: #FF9500;
+            background: radial-gradient(circle, #FFF3E0 0%, #FFECB3 100%);
+        }
+        
+        .fa-cloud {
+            color: #4B8EF9;
+            background: radial-gradient(circle, #E3F2FD 0%, #BBDEFB 100%);
+        }
+        
+        .fa-cloud-rain {
+            color: #1A73E8;
+            background: radial-gradient(circle, #E1F5FE 0%, #B3E5FC 100%);
+        }
+        
+        .fa-bolt {
+            color: #FFC107;
+            background: radial-gradient(circle, #3F51B5 0%, #303F9F 100%);
+        }
+        
+        .fa-snowflake {
+            color: #64B5F6;
+            background: radial-gradient(circle, #E8F5E9 0%, #C8E6C9 100%);
+        }
+        
+        .fa-smog {
+            color: #78909C;
+            background: radial-gradient(circle, #ECEFF1 0%, #CFD8DC 100%);
+        }
+        
+        /* Responsive styling */
+        @@media (max-width: 992px) {
+            .weather-icon-custom {
+                font-size: 5rem;
+                width: 140px;
+                height: 140px;
+                padding: 25px;
+            }
+            
+            .temp-value {
+                font-size: 3.5rem;
+            }
+            
+            .temp-unit {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @@media (max-width: 768px) {
+            .search-hero {
+                padding: 50px 0;
+            }
+            
+            .weather-icon-custom {
+                font-size: 4rem;
+                width: 120px;
+                height: 120px;
+                padding: 20px;
+                margin-top: 20px;
+            }
+            
+            .weather-details {
+                justify-content: center;
+            }
+            
+            .detail-item {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .weather-info {
+                text-align: center;
+            }
+            
+            .main-temp {
+                justify-content: center;
+            }
+            
+            .location-details {
+                justify-content: center;
+                display: flex;
+            }
+        }
+    </style>
+} 

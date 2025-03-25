@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  weatherapp:
+    image: weatherapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+      - "8443:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80;https://+:443
+      - OpenWeatherMapApiKey=4fd090bd393cbeff3c8a7eba16a02cc8 

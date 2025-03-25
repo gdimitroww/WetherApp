@@ -1,0 +1,126 @@
+﻿@{
+    ViewData["Title"] = "Weather Application";
+}
+
+<div class="home-container">
+    <div class="hero-section">
+        <div class="overlay"></div>
+        <div class="hero-content text-center">
+            <h1 class="display-4 text-white mb-4">Weather Forecasts Worldwide</h1>
+            <p class="lead text-white mb-4">Get real-time weather information for any city or country around the globe.</p>
+            <div class="btn-group">
+                <a asp-controller="Weather" asp-action="Index" class="btn btn-primary btn-lg me-3">Check Weather</a>
+                <a asp-controller="Weather" asp-action="AllCountries" class="btn btn-outline-light btn-lg">Global Weather</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-search fa-3x mb-3 text-primary"></i>
+                        <h3 class="card-title">Search Any Location</h3>
+                        <p class="card-text">Enter any city or country name to get current weather conditions including temperature, humidity, and more.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-globe-americas fa-3x mb-3 text-primary"></i>
+                        <h3 class="card-title">Global Coverage</h3>
+                        <p class="card-text">View weather data for major cities around the world in one comprehensive dashboard.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-cloud-sun-rain fa-3x mb-3 text-primary"></i>
+                        <h3 class="card-title">Detailed Forecasts</h3>
+                        <p class="card-text">Get comprehensive weather information with visual indicators and easy-to-read data displays.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4 mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2>Powered by OpenWeatherMap</h2>
+                <p class="lead">We use reliable and up-to-date weather data from OpenWeatherMap API to provide you with accurate weather information.</p>
+                <p>Our application converts raw weather data into a user-friendly format that's easy to understand at a glance.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" alt="OpenWeatherMap" class="img-fluid p-4" style="background-color: #444; border-radius: 8px; max-width: 300px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .home-container {
+            padding-bottom: 30px;
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 500px;
+            background-image: url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+            overflow: hidden;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            padding: 2rem;
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .card {
+            transition: transform 0.3s;
+            border-radius: 12px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive adjustments */
+        @@media (max-width: 768px) {
+            .hero-section {
+                height: 400px;
+            }
+            
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .btn-group .btn {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+}

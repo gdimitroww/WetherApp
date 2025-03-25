@@ -1,0 +1,109 @@
+@model List<WeatherApp.Models.WeatherModel>
+
+@{
+    ViewData["Title"] = "Weather for All Countries";
+}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h2 class="text-center">Weather for Capital Cities Around the World</h2>
+        </div>
+        <div class="card-body">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="alert alert-info">
+                    <p>Loading weather data for capital cities... This may take a moment.</p>
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Location</th>
+                                <th>Temperature</th>
+                                <th>Humidity</th>
+                                <th>Condition</th>
+                                <th>Weather</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var weather in Model)
+                            {
+                                <tr>
+                                    <td>@weather.Location</td>
+                                    <td>@weather.Temperature°C</td>
+                                    <td>@weather.Humidity%</td>
+                                    <td>@weather.Condition</td>
+                                    <td><i class="@weather.IconClass weather-icon-small"></i></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <a asp-action="Index" class="btn btn-outline-primary">Back to Weather Search</a>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .weather-icon-small {
+            font-size: 1.5rem;
+            padding: 10px;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Weather condition specific colors - same as in Index view */
+        .fa-sun {
+            color: #FFA500;
+            background-color: #FFEFDB;
+        }
+        
+        .fa-cloud {
+            color: #87CEEB;
+            background-color: #F0F8FF;
+        }
+        
+        .fa-cloud-rain {
+            color: #4682B4;
+            background-color: #F0F8FF;
+        }
+        
+        .fa-bolt {
+            color: #FFD700;
+            background-color: #483D8B;
+        }
+        
+        .fa-snowflake {
+            color: #ADD8E6;
+            background-color: #F0FFFF;
+        }
+        
+        .fa-smog {
+            color: #778899;
+            background-color: #F5F5F5;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+    </style>
+} 
